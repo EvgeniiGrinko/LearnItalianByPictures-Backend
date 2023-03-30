@@ -15,7 +15,7 @@ class UserController extends Controller
         try {
             $requestData = request()->input();
             $user = User::where("login", $requestData["login"])->first();
-            Log::channel("stack")->info("Request register new user data", [
+            Log::channel("stack")->info("Request login new user data", [
                 "requestData" => $requestData, "user" => $user
             ]);
             if ($user == null) {
@@ -31,7 +31,7 @@ class UserController extends Controller
                     "surname" => $user->surname,
                     "login" => $user->login,
                 ]);
-                Log::channel("stack")->info("response register new user data", [
+                Log::channel("stack")->info("response login new user data", [
                     "response" => $res
                 ]);
                 return $res;

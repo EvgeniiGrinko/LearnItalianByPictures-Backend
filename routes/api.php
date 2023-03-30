@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Api\UserController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +18,9 @@ Route::group(["prefix" => "user"], function(){
         Route::post('/register', [UserController::class, "register"]);
     }
 );
+Route::fallback(function () {
+    return abort(404);
+});
 
 
 //Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
